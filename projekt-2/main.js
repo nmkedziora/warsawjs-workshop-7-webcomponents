@@ -46,6 +46,12 @@ class GithubProfileCardElement extends HTMLElement {
     template.content.querySelector('.location').textContent = location;
   }
   displayRepos(template, repos) {
+    // sort and shorten repos before itteration
+    repos = repos.sort((a, b) => {
+      return b.stargazers_count - a.stargazers_count
+    });
+    repos = repos.slice(0, 5);
+
     for (let repo of repos) {
       const item = document.createElement('li');
       const name = document.createElement('span');
