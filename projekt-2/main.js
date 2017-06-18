@@ -11,7 +11,7 @@ class GithubProfileCardElement extends HTMLElement {
     this.shadow = this.attachShadow({mode: 'open'});
   }
   connectedCallback() {
-    const $template = document.currentScript.ownerDocument.querySelector('template');
+    const $template = GithubProfileCardElement.DOCUMENT.querySelector('template');
     const $clonedTemplate = $template.cloneNode(true);
 
     this.getGitHubDetails(URLS.profile)
@@ -66,4 +66,7 @@ class GithubProfileCardElement extends HTMLElement {
     }
   }
 }
+
+GithubProfileCardElement.DOCUMENT = document.currentScript.ownerDocument;
+
 window.customElements.define('github-profile-card-element', GithubProfileCardElement);

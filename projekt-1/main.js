@@ -5,7 +5,7 @@ class MockupElement extends HTMLElement{
     this.shadow = this.attachShadow({mode: 'open'});
   }
   connectedCallback() {
-    const $template = document.currentScript.ownerDocument.querySelector('template');
+    const $template = MockupElement.DOCUMENT.querySelector('template');
     const $clonedTemplate = $template.cloneNode(true);
 
     $clonedTemplate.content.querySelector('img').setAttribute('src', this.attributes.image.value);
@@ -13,4 +13,7 @@ class MockupElement extends HTMLElement{
     this.shadow.appendChild($clonedTemplate.content);
   }
 }
+
+MockupElement.DOCUMENT = document.currentScript.ownerDocument;
+
 window.customElements.define('mockup-element', MockupElement);
