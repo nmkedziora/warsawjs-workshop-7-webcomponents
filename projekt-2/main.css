@@ -1,0 +1,12 @@
+.avatar,
+.info {
+  display: inline-block;
+}
+
+.avatar {
+  vertical-align: top;
+}
+
+.info {
+  padding-left: 25px;
+}
